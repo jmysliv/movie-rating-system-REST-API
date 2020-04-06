@@ -3,10 +3,9 @@ import { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 import UserModel, { IUser } from "../models/user.model";
 
-
 mongoose.set("useFindAndModify", false);
 
-export const isPasswordAndUserMatch = (req: Request, res: Response, next: NextFunction) => {
+export const checkPasswordAndUser = (req: Request, res: Response, next: NextFunction) => {
     UserModel.findOne({email: req.body.email}, (err, user: IUser) => {
             if (!user) {
                 res.status(404).send({});

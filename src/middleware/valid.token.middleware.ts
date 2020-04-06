@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { IUser } from "./../models/user.model";
 
-export const validJWTNeeded = (req: Request, res: Response, next: NextFunction) => {
+export const validateToken = (req: Request, res: Response, next: NextFunction) => {
     if (req.headers.authorization) {
         try {
             const authorization = req.headers.authorization.split(" ");
