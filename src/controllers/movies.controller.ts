@@ -13,7 +13,7 @@ export const searchByTitle = async (req: Request, res: Response) => {
         }
         const content = await response.json();
         const movie: Movie = new Movie();
-        await movie.fillData(content.imdbID, content.Year, content.Title, content.Genre, req.user._id);
+        await movie.fillData(content.imdbID, content.Title, content.Year, content.Genre, req.user._id);
         res.status(200).send(movie);
 
     } catch(err) {
