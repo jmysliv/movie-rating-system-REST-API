@@ -22,6 +22,6 @@ const movieSchema = new mongoose.Schema({
     }]
 })
 
-const movieModel = mongoose.Model("movies", movieSchema);
+const movieModel = mongoose.model("movies", movieSchema);
 mongoose.set("useFindAndModify", false);
 export default movieModel;

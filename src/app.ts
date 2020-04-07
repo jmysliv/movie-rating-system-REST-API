@@ -1,4 +1,4 @@
-import { searchByTitle } from './controllers/movies.controller';
+import { searchByTitle, markAsFavourite, unmarkAsFavourite } from './controllers/movies.controller';
 import { validateToken } from './middleware/valid.token.middleware';
 import mongoose from 'mongoose';
 import { checkPasswordAndUser } from './middleware/verify.user.middleware';
@@ -23,6 +23,8 @@ app.use(express.static(path.join(__dirname, "../static_files")));
 app.post("/register", register);
 app.post("/login", [checkPasswordAndUser, login])
 app.get("/movies/:title", [validateToken, searchByTitle]);
+app.get("/mark-favourite/:id", [validateToken, markAsFavourite]);
+app.get("/unmark-favourite/:id", [validateToken, unmarkAsFavourite]);
 
 const server = app.listen(3000, "0.0.0.0", (e) => {
     console.log("running");
