@@ -12,7 +12,7 @@ export const searchByTitle = async (req: Request, res: Response) => {
             res.status(500).send({message: "Cannot fetch movie from API"})
         }
         const content = await response.json();
-        const movie: Movie = (new Movie());
+        const movie: Movie = new Movie();
         await movie.fillData(content.imdbID, content.Year, content.Title, content.Genre, req.user._id);
         res.status(200).send(movie);
 
