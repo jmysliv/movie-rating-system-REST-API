@@ -1,3 +1,5 @@
+import { searchByTitle } from './controllers/movies.controller';
+import { validateToken } from './middleware/valid.token.middleware';
 import mongoose from 'mongoose';
 import { checkPasswordAndUser } from './middleware/verify.user.middleware';
 import { register, login } from './controllers/user.controller';
@@ -20,6 +22,7 @@ app.use(express.static(path.join(__dirname, "../static_files")));
 
 app.post("/register", register);
 app.post("/login", [checkPasswordAndUser, login])
+app.get("/movies/:title", [validateToken, searchByTitle]);
 
 const server = app.listen(3000, "0.0.0.0", (e) => {
     console.log("running");
